@@ -4,6 +4,8 @@ class PaymentsController < ApplicationController
     @order = Order.find session[:order_id]
   end
   
+  #testing abcd
+  
   def create
     
     flash[:notice] = "Order confirm. Payment successfully"
