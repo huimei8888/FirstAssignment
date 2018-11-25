@@ -4,6 +4,7 @@ class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
   
   # TESTING GIT MODIFIED
+  # TESTING
 
   # GET /admins
   # GET /admins.json
