@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   layout "admin"
   before_action :authenticate_admin
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  
+  
+  
+  #testing testing
 
   # GET /users
   # GET /users.json
