@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ordering date:</strong>
+  <%= @order.ordering_date %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @order.user.name %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @order.remark %>
+</p>
+
+<hr></hr>
+<h2>Order Item</h2>
+
+<ul>
+  <% @order.order_items.each do |order_item| %>
+    <li><%= order_item.menu.name %> - RM <%= order_item.menu.price %> x <%= order_item.quantity %></li>
+  <% end %>
+</ul>
+
+<hr></hr>
+<h2>Create order item for your order</h2>
+
+<%= form_with(url: create_order_items_orders_path, model: OrderItem.new(order_id: @order.id), local: true) do |form| %>
+  <div class="field">
+    <%= form.hidden_field :order_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :menu_id %>
+    <%= form.select :menu_id, Menu.order(:name).map {|menu| [ menu.name, menu.id] }, { include_blank: "Please select a item" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

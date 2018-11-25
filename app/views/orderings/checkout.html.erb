@@ -1,0 +1,64 @@
+<br>
+<h1 style="color:grey">Checkout</h1>
+
+<br>
+
+<h4>Order ID&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp; <%= @order.id %></h4>
+
+<br>
+
+<h4>Order Date :&nbsp;&nbsp; <%= @order.ordering_date %></h4>
+
+<br>
+
+<h4>Order Item :</h4>
+<%= form_tag update_all_order_order_items_path(@order), method: :patch do %>
+  <table style="width: 100%; border: 1px solid">
+      <tr>
+          <th style="text-align: center">Menu Item Name</th>
+          <th style="text-align: center">Menu Item Unit Price</th>
+          <th style="text-align: center">Menu Item Quantity</th>
+          <th style="text-align: center">Sub Total</th>
+      </tr>
+      <% sum_total = 0.0 %>
+      <% @order.order_items.each do |order_item| %>
+        <% sub_total = order_item.menu.price * order_item.quantity %>
+        <% sum_total += sub_total %>
+        <tr>
+          <td style="text-align: center"><%= order_item.menu.name %></td>
+          <td style="text-align: center"><%= order_item.menu.price %></td>
+          <td style="text-align: center"><%= text_field_tag "order_item[#{order_item.id}][quantity]", order_item.quantity %></td>
+          <td style="text-align: center"><%= sub_total %></td>
+        </tr>
+      <% end %>
+      <tr>
+          <td colspan="3"></td>
+          <td>Sum Total : <%= sum_total %></td>
+      </tr>
+  </table>
+  
+  <br>
+  <div style="float: right">
+    <button><%= link_to "Continue Order", orderings_path %></button>
+    <%= submit_tag "Update Order" %>  
+    <button><%= link_to "Make Payment", new_payment_path %></button>
+  </div>
+  
+  <!--<h2>Delivery Infomations</h2>-->
+  
+  <!--<%#= form_tag "/orderings/checkout" do %>-->
+  <!--  <div class="field">-->
+  <!--    <%#= label :delivery_address %>-->
+  <!--    <%#= textarea_field :delivery_address %>-->
+  <!--  </div>-->
+    
+  <!--  <div class="field">-->
+  <!--    <%#= label :contact_number %>-->
+  <!--    <%#= text_field :contact_number %>-->
+  <!--  </div>-->
+    
+  <!--  <div class="actions">-->
+  <!--    <%#= submit %>-->
+  <!--  </div>-->
+  <!--<%# end %>-->
+<% end %>

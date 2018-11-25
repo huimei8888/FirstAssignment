@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Food Delivery</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <div style="width:100%">
+
+        <%= image_tag('pgfood.jpg') %>
+      </div>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <%= image_tag('logo.jpg') %>&nbsp;&nbsp;
+      <h2 class="text-white-50 bg-dark">Food Delivery</h2>
+        <form class="form-inline ml-auto">
+          <% if session[:user_id].present? %>
+            <h4 class="text-white-50 bg-dark">Welcome, <%= session[:user_name] %></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <h4><%= link_to "Logout", "/logout", data: { method: :delete } %></h4>
+          <% else %>
+            <h4><%= link_to "Sign Up", "/sign_up" %></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+            <h4><%= link_to "Login", "/login" %></h4>
+          <% end %>
+        </form>
+    </nav>
+    
+    
+    <div  id="flash_messages">
+      <% if flash[:alert].present? %>
+      <p style="text-align:center; font-size:15px; background-color:red">
+        <%= flash[:alert] %>
+      </p>
+    <% end %>
+    
+    <% if flash[:notice].present? %>
+      <p class="notice_message" style="text-align:center; font-size:15px; background-color:#99ff33">
+        <%= flash[:notice] %>
+      </p>
+    <% end %>
+    </div>
+    
+    
+    <%= yield %><br><br><br><br><br>
+    <div class="footer">
+    <p>@Food Delivery 2018</p>
+  </div>
+  </body>
+  
+  
+</html>

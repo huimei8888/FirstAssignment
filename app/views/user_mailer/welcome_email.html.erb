@@ -1,0 +1,11 @@
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+        
+       <%#= image_tag "logo.jpg" %>
+        
+      <h1 class="display-4 font-italic">Hi, <%= @user.name %></h1>
+      <p class="lead my-3">Congratulation, you have successfully registered an account in our food ordering system.</p>
+      <%= link_to 'Login To Start Order', login_url %>
+      <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+    </div>
+</div>

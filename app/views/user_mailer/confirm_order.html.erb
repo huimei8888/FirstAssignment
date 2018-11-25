@@ -1,0 +1,35 @@
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+        
+      <h1 class="display-4 font-italic">Dear <%= @user.name %></h1>
+      <p class="lead my-3">Thanks for choosing Food Delivery! </p
+      <p>Order Date : <%= @order.ordering_date %></p>
+      <p>Here is the summary of your order </p>
+      <table>
+      <tr>
+          <th style="text-align: center">Menu Item Name</th>
+          <th style="text-align: center">Menu Item Unit Price</th>
+          <th style="text-align: center">Menu Item Quantity</th>
+          <th style="text-align: center">Sub Total</th>
+      </tr>
+      <% sum_total = 0.0 %>
+      <% @order.order_items.each do |order_item| %>
+        <% sub_total = order_item.menu.price * order_item.quantity %>
+        <% sum_total += sub_total %>
+        <tr>
+          <td style="text-align: center"><%= order_item.menu.name %></td>
+          <td style="text-align: center"><%= order_item.menu.price %></td>
+          <td style="text-align: center"><%= order_item.quantity %></td>
+          <td style="text-align: center"><%= sub_total %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="3"></td>
+        <td>Sum Total : <%= sum_total %></td>
+      </tr>
+      </table>    
+      <p>Happy Dining!</p>
+      <p>The Food Delivery Team</p>
+      <h6>This is a system-generated email. Please do not reply.</h6>
+  </div>
+</div>

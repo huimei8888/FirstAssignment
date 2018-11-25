@@ -1,0 +1,21 @@
+<br>
+<p style="font-size:50px; text-align:center; color:grey">WELCOME TO ADMIN PAGE</p>
+<div class="center">
+<h1>Admin Login</h1>
+<br>
+<%= form_tag "/admin/login" do %>
+
+  <label>Email</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= text_field_tag "email" %>
+  
+  <br><br>
+  
+  <label>Password</label>&nbsp;&nbsp;
+  <%= password_field_tag "password" %>
+  
+  <br><br>
+  
+  <%= submit_tag "Login" %>
+
+<% end %>
+</div>

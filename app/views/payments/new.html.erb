@@ -1,0 +1,43 @@
+<h1 style="font-size:50px; text-align:center; color:grey">Make Payment</h1><br><br>
+
+<div style="text-align:center">
+  
+  <%= image_tag('logo4.jpg') %><br><br>
+    
+<%= form_tag payments_path do %>
+  
+  <p style="font-size:20px"><b>
+  <label>TOTAL AMOUNT : RM</label>
+  <%= @order.total_amount %>
+  </b></p>
+  
+  <label>Card Type</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+  <%= text_field_tag "card_type" %>
+  
+  <br><br>
+  
+  <label>Card No.</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+  <%= text_field_tag "card_no" %>
+  
+  <br><br>
+  
+  <label>Card Owner Name :</label>
+  <%= text_field_tag "card_owner_name" %>
+  
+  <br><br>
+  
+  <label>Card Expiry Date</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+  <%= text_field_tag "card_expiry_date" %>
+  
+  <br><br>
+  
+  <label>CSV No.</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+  <%= text_field_tag "csv_no" %>
+  
+  <br><br>
+  
+  <%= submit_tag "Pay" %>  
+  
+<% end %>
+
+</div>

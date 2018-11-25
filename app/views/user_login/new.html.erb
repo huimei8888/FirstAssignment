@@ -1,0 +1,26 @@
+<br>
+<p style="font-size:50px; text-align:center; color:MediumSeaGreen">WELCOME TO FOOD DELIVERY</p>
+<div class="center">
+<h1>User Login</h1><br>
+
+<%= form_tag "/login" do %>
+
+  <label>Email</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= text_field_tag "email" %>
+  
+  <br><br>
+  
+  <label>Password</label>&nbsp;&nbsp;
+  <%= password_field_tag "password" %>
+  
+  <br><br>
+  
+  <%= link_to "Sign up", sign_up_path %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <%= link_to "Forget Password" %>
+  
+  <br><br>
+  
+  <%= submit_tag "Login" %>
+
+<% end %>
+</div>

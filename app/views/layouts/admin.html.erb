@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Food Delivery</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if flash[:alert].present? %>
+      <P>
+        <%= flash[:alert] %>
+      </P>
+    <% end %>
+    
+    <% if flash[:notice].present? %>
+      <P>
+        <%= flash[:notice] %>
+      </P>
+    <% end %>
+    
+    <h2>Admin ID: <%= session[:admin_id] %></h2>
+    
+      <ul>
+        <li><%= link_to "Category", categories_path %></li>
+        <li><%= link_to "Menu", menus_path %></li>
+        <li><%= link_to "Order", orders_path %></li>
+        <li><%= link_to "Customer", users_path %></li>
+        <li><%= link_to "Admin", admins_path %></li>
+        <li>
+          <% if session[:admin_id].present? %>
+            <%= link_to "Logout", "/admin/logout", data: { method: :delete } %>
+          <% end %>
+        </li>
+      </ul>
+    
+    
+    <%= yield %>
+  </body>
+  <div class="footer">
+    <p>@Food Delivery 2018</p>
+  </div>
+</html>
